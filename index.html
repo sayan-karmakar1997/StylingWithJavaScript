@@ -5,8 +5,66 @@
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+<input id="myInput" type="number" oninput="onInputChange()" min="0" max="100"></input>
+<br>
+<br>
+<p id="grade" style="color:red">Please give a number</p>
+<p id="Remark">Remark</p>
+<script>
+function onInputChange(){
+	var grade = "Unknown"
+	var color = "black"
+	var Remark_text = "Remark"
+	var value = document.getElementById("myInput").value
+	if(value == ""){
+		grade = "Please give a number"
+		color = "red"
+		Remark_text = "Remark"
+	}
+	else{
+		var n = parseInt(value)
+		if(n>=0&&n<=25){
+			grade = "D"
+			color = "red"
+			Remark_text = "Fail"
+			
+		}
+		else if(n>=26&&n<=35){
+			grade = "C"
+			color = "orange"
+			Remark_text = "2nd Divition"
+		}
+		else if(n>=36&&n<=50){
+			grade = "B"
+			color = "yellow"
+			Remark_text  = "upper 2nd Divition" 
+		}
+		else if(n>=51&&n<=70){
+			grade = "A"
+			color = "blue"
+			Remark_text = "1st Divition"
+		}
+		else if(n>=71&&n<=100){
+			grade = "A+"
+			color = "green"
+			Remark_text = "Star"
+		}
+		else{
+			grade = "Out Of Range"
+			color = "red"
+			Remark_text = "Out Of Range"
+		}
+	}
+	
+	var element = document.getElementById("grade")
+	element.innerHTML = grade
+	element.style.color = color
+	var Remark = document.getElementById("Remark")
+	Remark.style.color = color
+	Remark.innerHTML = Remark_text
+}
+</script>
+
 
 </body>
 </html>
